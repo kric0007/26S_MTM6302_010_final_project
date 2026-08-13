@@ -7,105 +7,142 @@
     <!-- bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
     <!-- font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
     <!-- custom css -->
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
     <title>Budget Buddy</title>
 </head>
 
 <body>
     <header>
-        <nav class="navbar mt-2 me-5 ms-5">
+        <nav class="navbar container">
             <div class="container-fluid">
-                <img class="logo-img" src="/assets/logo.png" alt="logo image">
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search Transaction..."
-                        aria-label="Search" />
-                    <button class="btn btn-outline-success" type="submit">Search</button>
+                <img class="logo-img" src="assets/logo.png" alt="logo image">
+                <form class="d-flex" role="search" id="search-form">
+                    <div class="search-container">
+                        <input type="text" class="form-control search-input" placeholder="Search...">
+                    </div>
                 </form>
             </div>
         </nav>
     </header>
 
-    <main>
-        <section class="info-cards-section mt-3 me-5">
-            <div class="d-flex justify-content-end gap-4">
-                <div class="info-card bg-success card p-3 shadow-sm">
-                    <h6 class="fw-light">Current Balance</h6>
-                    <span>
-                        <p class="balance">$3,450.00</p>
-                    </span>
-                </div>
-                <div class="info-card bg-primary card p-3 shadow-sm">
-                    <h6 class="fw-light">Total Income</h6>
-                    <span>
-                        <p class="income">+ $2,200.00</p>
-                    </span>
-                </div>
-                <div class="info-card bg-danger card p-3 shadow-sm">
-                    <h6 class="fw-light">Total Expenses</h6>
-                    <span>
-                        <p class="expense">- $750.00</p>
-                    </span>
-                </div>
+    <main class="container">
+        <div class="row">
+            <div class="col col-lg-4 mb-4">
+                <section class="add-transaction-section">
+                    <form id="form" class="card add-card ps-3 pe-3 pt-4 pb-4 shadow-sm">
+                        <h3 class="pb-3">Add Transaction</h3>
+                        <div class="form-group input-group input-group-sm mb-3 d-flex flex-column">
+                            <h6>Description</h6>
+                            <input id="description-input" type="text" required class="form-control w-auto"
+                                aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                        </div>
+                        <div class="form-group input-group input-group-sm mb-3 d-flex flex-column">
+                            <h6>Amount</h6>
+                            <input id="amount-input" type="number" required min="0.01" step="0.01" value="0.00"
+                                class="form-control w-auto" aria-label="Sizing example input"
+                                aria-describedby="inputGroup-sizing-sm">
+                        </div>
+                        <div class="form-group btn-group d-block" role="group"
+                            aria-label="Basic radio toggle button group">
+                            <h6>Type</h6>
+                            <div class="d-flex">
+                                <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off"
+                                    checked>
+                                <label class="btn btn-outline-primary flex-grow-1" for="btnradio1">Income</label>
+
+                                <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
+                                <label class="btn btn-outline-primary flex-grow-1" for="btnradio2">Expense</label>
+                            </div>
+                        </div>
+                        <div class="form-group mt-3">
+                            <h6>Date</h6>
+                            <input id="date-input" required class="date-selector form-control" type="date" value="" />
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <button type="submit" class="btn btn-primary add-btn mt-4 mb-4">Add Transaction</button>
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <img class="logomark" src="assets/logomark.png" alt="logo">
+                        </div>
+                    </form>
+                </section>
             </div>
-        </section>
+            <div class="col col-lg-8 mb-4">
+                <section class="info-cards-section mb-4">
+                    <div class="info-cards-container justify-content-center gap-4">
+                        <div class="info-card card p-3 shadow-sm bg-primary">
+                            <h6 class="fw-light">Current Balance</h6>
+                            <span>
+                                <p class="balance"><span>0.00</span></p>
+                            </span>
+                        </div>
+                        <div class="info-card card p-3 shadow-sm bg-success">
+                            <h6 class="fw-light">Total Income</h6>
+                            <span>
+                                <p class="income">+ <span>0.00</span></p>
+                            </span>
+                        </div>
+                        <div class="info-card bg-danger card p-3 shadow-sm">
+                            <h6 class="fw-light">Total Expenses</h6>
+                            <span>
+                                <p class="expense">- <span>0.00</span></p>
+                            </span>
+                        </div>
+                    </div>
+                </section>
 
-        <section class="add-transaction-section ms-5">
-            <div class="card add-card ps-3 pe-3 pt-4 pb-4 shadow-sm">
-                <h3 class="pb-3">Add Transaction</h3>
-                <div class="input-group input-group-sm mb-3 d-flex flex-column">
-                    <h6>Description</h6>
-                    <input type="text" class="form-control w-auto" aria-label="Sizing example input"
-                        aria-describedby="inputGroup-sizing-sm">
-                </div>
-                <div class="input-group input-group-sm mb-3 d-flex flex-column">
-                    <h6>Amount</h6>
-                    <input type="text" class="form-control w-auto" aria-label="Sizing example input"
-                        aria-describedby="inputGroup-sizing-sm">
-                </div>
-                <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-                    <h6>Type</h6>
+                <section class="dashboard-section">
+                    <div class="card card-dashboard">
+                        <div class="dash-title">
+                            <div>
+                                <h3>Transaction Feed</h3>
+                                <h5 class="fw-light">Cash Flow <span id="transaction-subtitle"></span></h5>
+                            </div>
+                            <div class="d-grid d-md-block btn-group" role="group"
+                                aria-label="Basic radio toggle button group">
+                                <div class="d-flex gap-2">
+                                    <input type="radio" class="btn-check" name="filter-radio" id="btnAll"
+                                        autocomplete="off" value="all" checked>
+                                    <label class="btn btn-outline-primary flex-grow-1" for="btnAll">All</label>
 
-                    <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
-                    <label class="btn btn-outline-primary" for="btnradio1">Income</label>
+                                    <input type="radio" class="btn-check" name="filter-radio" id="btnIncome"
+                                        autocomplete="off" value="income">
+                                    <label class="btn btn-outline-primary flex-grow-1" for="btnIncome">Income</label>
 
-                    <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
-                    <label class="btn btn-outline-primary" for="btnradio2">Expense</label>
-
-                </div>
-                <div>
-                    <h6>Date</h6>
-                    <input class="date-selector" type="date" value="" />
-                </div>
-                <div class="d-flex justify-content-center">
-                    <button type="button" class="btn btn-primary add-btn mt-4 mb-4">Add Transaction</button>
-                </div>
-                <div class="d-flex justify-content-center">
-                    <img class="logomark" src="assets/logomark.png" alt="logo">
-                </div>
+                                    <input type="radio" class="btn-check" name="filter-radio" id="btnExpense"
+                                        autocomplete="off" value="expense">
+                                    <label class="btn btn-outline-primary flex-grow-1" for="btnExpense">Expense</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="table-container">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Date</th>
+                                        <th scope="col">Description</th>
+                                        <th scope="col">Type</th>
+                                        <th scope="col">Amount</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody id="transactionsTable"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
             </div>
-        </section>
-
-        <section class="dashboard-section">
-            <div class="card card-dashboard">
-                <div>
-                    <h3>Transaction Feed</h3>
-                    <h5 class="fw-light">Cash Flow - January 2026 - July 2026</h5>
-                </div>
-                <div class="d-grid gap-2 d-md-block">
-                    <button class="btn btn-primary active" type="button">All</button>
-                    <button class="btn btn-primary" type="button">Income</button>
-                    <button class="btn btn-primary" type="button">Expense</button>
-                </div>
-            </div>
-        </section>
+        </div>
     </main>
 
-<script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 
 </html>

@@ -25,6 +25,30 @@ body {
     width: auto;
 }
 
+.search-container {
+    position: relative;
+}
+
+.search-input {
+    height: 35px;
+    border-radius: 30px;
+    padding-left: 35px;
+    border: none;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-control:focus {
+    color: var(--bs-body-color);
+    background-color: var(--bs-body-bg);
+    outline: 0;
+
+    /* Updates the solid border line to the brand color */
+    border-color: #7B71B9;
+
+    /* Updates the soft glow ring around the box (with 25% visibility) */
+    box-shadow: 0 0 0 .25rem rgba(123, 113, 185, 0.25);
+}
+
 .btn-outline-success {
     border: 1px solid var(--text-success-primary);
     color: var(--text-success-primary);
@@ -44,20 +68,17 @@ h3 {
 }
 
 .balance {
-    color: var(--text-success-primary);
+    color: var(--text-brand-primary);
 }
 
 .income {
-    color: var(--text-brand-primary);
+    color: var(--text-success-primary);
 }
 
 .expense {
     color: var(--text-error-primary);
 }
 
-.add-transaction-section {
-    max-width: 35%;
-}
 
 .add-card,
 .card-dashboard {
@@ -125,11 +146,7 @@ h3 {
     width: stretch;
 }
 
-.dashboard-section {
-    max-width: 65%;
-}
-
-.card-dashboard {
+.dash-title {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -137,3 +154,34 @@ h3 {
     padding: 12px 16px 12px 16px;
 }
 
+.info-cards-container {
+    display: flex;
+}
+
+.table-container {
+    padding: 12px 16px 12px 16px;
+}
+
+.table th {
+    color: var(--text-brand-primary);
+}
+
+.show-on-hover {
+    display: none;
+}
+
+tr:hover .show-on-hover {
+    display: block;
+}
+
+@media screen and (max-width: 576px) {
+    .info-cards-container {
+        display: block;
+    }
+
+    .info-card {
+        margin: 0 auto 1rem auto;
+        width: 100%;
+        text-align: center;
+    }
+}
